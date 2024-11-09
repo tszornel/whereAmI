@@ -1,0 +1,20 @@
+<project name="maker" default="run" basedir=".">
+
+  <path id="sdk.class.path">
+    <pathelement location="..\hosasdk\corba_sun.jar"/>
+    <pathelement location="..\hosasdk\coresdk.jar"/>
+    <pathelement location="..\hosasdk\utilitysdk.jar"/>
+    <pathelement location="..\hosasdk\mail.jar"/>
+    <pathelement location="..\hosasdk\activation.jar"/>
+  </path>
+
+  <target name="compile">
+    <mkdir dir="classes"/>
+    <javac srcdir="source" destdir="classes" classpathref="sdk.class.path"/>
+  </target>
+
+  <target name="run" depends="compile">
+    <java classname="Launcher" classpathref="sdk.class.path" classpath="classes" fork="true"/>
+  </target>
+
+</project>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=windows-1252" />
+<title>Documentation Example Applications</title>
+<link rel="stylesheet" type="text/css"
+href="css/EricssonNRGSDK.css" />
+</head>
+<body>
+<table class="header" summary="">
+<tbody>
+<tr>
+<td class="headerLeft" width="40"><img src="images/logo.gif"
+alt="H-OSA SDK" width="177" height="100" /></td>
+<td class="headerMain"><span class="title">H-OSA SDK</span><br />
+ <span class="subtitle">Example Applications</span><br />
+<br />
+ <span class="chapter">Design Guide Example Application
+SMStoMMS</span></td>
+<td class="headerRight"><a href="index.html">Example Applications
+- Home</a></td>
+</tr>
+</tbody>
+</table>
+<br />
+ 
+<table class="paragraph" summary="">
+<caption>Contents</caption>
+<tbody>
+<tr>
+<td>
+<ul class="content">
+<li><a href="#Class">Class Diagram</a></li>
+<li><a href="#Sequence">Sequence Diagram</a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<br />
+ 
+<table class="paragraph" summary="">
+<caption><a id="Class"></a>Class Diagram</caption>
+<tbody>
+<tr>
+<td><br />
+ <code>MMSMessageContent</code> class is responsible for the MMS
+content of the MMS message. This extra class is created to
+separate the send message functionality from the content of the
+message.<br />
+ Because the content of a MMS is a mixed mime multi part, JAVA
+MAIL&acute;s <code>MultiPartMime</code> class is extended by
+<code>MMSMessageContent</code>.<br />
+ This is done, because now BodyParts (containing the media) can
+be added to <code>MMSMessageContent</code>.<br />
+<br />
+ First all the <code>MMSMessageContent</code> objects are
+composed The content that will be stored in the objects is read
+from files named according to the phone number of the friends
+(e.g. 123.jpg or 948.jpg). These phone numbers are stored in a
+configuration file.<br />
+ The addMedia method adds the files to the
+<code>MMSMessageContent</code> object.<br />
+ Finally the content is stored in a <code>Hashmap</code> with the
+phone number as &lsquo;key&rsquo; value (so it&rsquo;s easy to
+retrieve later on).<br />
+<br />
+ When a SMS is received (by the <code>SMSReceived</code> method),
+the SMS text is added to this content using the
+<code>addTextMedia</code> method.<br />
+ Once this is done, the complete MMS content is composed and can
+be sent.<br />
+<br />
+ The sending responsibility lies by the
+<code>sendMMSMessage</code> method in the
+<code>MMSProcessor</code> class. A byte representation of the
+content is given to this method.<br />
+ <img src="images/smstomms_class.gif"
+alt="Class Diagram SMStoMMS" border="0" /><br />
+</td>
+</tr>
+</tbody>
+</table>
+<br />
+ See the <a href="commonDesign.htm#Class">Common Design - Class
+Diagram</a> for design information. <br />
+<br />
+ 
+<table class="paragraph" summary="">
+<caption><a id="Sequence"></a>Sequence Diagram</caption>
+<tbody>
+<tr>
+<td><br />
+ When the application starts, and the Start button in the Gui is
+being pressed.<br />
+ <img src="images/smstomms_seq1.gif"
+alt="Sequence Diagram SMStoMMS" border="0" /><br />
+</td>
+</tr>
+<tr>
+<td><br />
+ Continuation of the start method in above sequence diagram.
+First all the MMSMessageContent for each friend is created, then
+notification is being set and handled<br />
+ <img src="images/smstomms_seq2.gif"
+alt="Sequence Diagram SMStoMMS" border="0" /><br />
+</td>
+</tr>
+<tr>
+<td><br />
+ When Stop button in the Gui is being pressed.<br />
+ <img src="images/smstomms_seq3.gif"
+alt="Sequence Diagram SMStoMMS" border="0" /><br />
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

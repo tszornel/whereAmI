@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+  <title>Documentation Example Applications</title>
+  <link rel="stylesheet" type="text/css" href="css/EricssonNRGSDK.css" />
+</head>
+
+<body>
+
+<table class="header" summary="">
+  <tbody>
+    <tr>
+      <td class="headerLeft" width="40"><img src="images/logo.gif"
+        alt="H-OSA SDK" width="177" height="100" /></td>
+      <td class="headerMain"><span class="title">H-OSA SDK</span><br />
+        <span class="subtitle">Example Applications</span> <br />
+        <br />
+        <span class="chapter">User Guide Example Application
+      SMStoMMS</span></td>
+      <td class="headerRight"><a href="index.html">Example Applications -
+        Home</a></td>
+    </tr>
+  </tbody>
+</table>
+<br />
+
+
+<table class="paragraph" summary="">
+  <caption>Contents</caption>
+  <tbody>
+    <tr>
+      <td><ul class="content">
+          <li><a href="#Functional">Functional Description</a></li>
+          <li><a href="#Configuration">Configuration</a></li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
+
+
+<table class="paragraph" summary="">
+  <caption><a id="Functional"></a>Functional Description</caption>
+  <tbody>
+    <tr>
+      <td>The SMStoMMS application forwards an incoming SMS message as a MMS
+        message.<br />
+        If the the SMStoMMS feature feature is enabled for the destination
+        number (SUBSCRIBER_B), then every incoming SMS message of a friend
+        (SUBSCRIBER_A) to SUBSCRIBER_B&rsquo;s phone number will be forwarded
+        as a MMS message.<br />
+        The MMS message shall contain the original SMS text and media (an
+        image). <br />
+        <img src="images/smstomms.gif" alt="SMStoMMS" border="0" /> <br />
+        For example: <br />
+        Jack: 0612345678 <br />
+        Jill: 0698765432 <br />
+        Jack (a friend of Jill) sends a SMS message to Jill, with content:
+        <i>I&rsquo;ll be late for dinner</i>. Jill will receive a MMS message
+        on her phone with text: <i>I&rsquo;ll be late for dinner again</i>
+        and an image <br />
+        <br />
+        <b>A Subscriber</b> <br />
+        An A_Subscribers is a person who initiates a certain action (here
+        sending a SMS message to another person). The applications can have
+        ceveral A subscribers. <br />
+        <br />
+        <b>B Subscriber</b> <br />
+        The B_Subscriber mentioned is the person who is registered to an
+        application. This means that the phone number is set in the
+        application to be the destination address, on which the application
+        triggers (e.g. when a message is received for this number). <br />
+        <br />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br />
+
+
+<table class="paragraph" summary="">
+  <caption><a id="Configuration"></a>Configuration</caption>
+  <tbody>
+    <tr>
+      <td>The following settings have to be specified in the configuration
+        file:<br />
+        <br />
+
+
+        <table class="variableTable" summary="">
+          <tbody>
+            <tr>
+              <th>Variable</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>subscriber.phone</td>
+              <td>Phone number of the subscriber for whom the service will be
+                activated</td>
+            </tr>
+            <tr>
+              <td>friend.0 - friend.3</td>
+              <td>Phone numbers of which the receiving SMS will be forwarded
+                as MMS (note that for each friend a jpg image must exist in
+                the directroy <i>content</i> with the same phonenumber, e.g.
+                123.jpg if a phone number is 123)</td>
+            </tr>
+            <tr>
+              <td>originatingTrigger</td>
+              <td>The trigger value of the originating addresses, the friends
+                (e.g. <i>???</i> if all friends numbers consitst out of 3
+                digits)</td>
+            </tr>
+            <tr>
+              <td>serviceCode</td>
+              <td>A operator specific value (of 2 digits), on this value
+                there will also be triggered</td>
+            </tr>
+            <tr>
+              <td>billing</td>
+              <td>Billing string (agreed with the operator) to specify how
+                billing of the MMS is handled</td>
+            </tr>
+            <tr>
+              <td>responseRequired</td>
+              <td>Specifies if a response is requested on the MMS (true /
+                false)</td>
+            </tr>
+            <tr>
+              <td>deliveryNotification</td>
+              <td>Specifies if a delivery notification of the MMS is
+                desireable (true / false)</td>
+            </tr>
+            <tr>
+              <td>validityTime</td>
+              <td>Time the MMS message stays valid (e.g. 2010-01-01
+                00:00:00.000)</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        See the <a href="commonUsage.htm#GeneralConfig">Common Usage -
+        General Configuration</a> also.</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
